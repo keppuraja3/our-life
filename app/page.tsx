@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from "react";
 import DomeGallery from "./gallery/DomeGallery";
 import LoveTextLoader from "./loader/LoveTextLoader";
@@ -19,7 +19,13 @@ export default function Home() {
         //   speed={3}
         //   className="custom-class"
         // />
-        <img src='/images/my_love_33.png' alt='For my love' style={{objectFit:"contain"}} />
+        <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+          <img
+            src="/images/my_love_33.png"
+            alt="For my love"
+            style={{ objectFit: "contain" }}
+          />
+        </div>
       ) : (
         <DomeGallery />
       )}
