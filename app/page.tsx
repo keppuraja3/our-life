@@ -19,7 +19,15 @@ export default function Home() {
         //   speed={3}
         //   className="custom-class"
         // />
-        <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100dvw",
+            height: "100dvh",
+          }}
+        >
           <img
             src="/images/my_love_33.png"
             alt="For my love"
