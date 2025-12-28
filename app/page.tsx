@@ -8,17 +8,18 @@ export default function Home() {
 
   setTimeout(() => {
     setPageLoading(false);
-  }, 2000);
+  }, 5000);
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       {pageLoading ? (
-        <LoveTextLoader
-          text="Just some shiny text!"
-          disabled={false}
-          speed={3}
-          className="custom-class"
-        />
+        // <LoveTextLoader
+        //   text="For my love..."
+        //   disabled={false}
+        //   speed={3}
+        //   className="custom-class"
+        // />
+        <img src='/images/my_love_33.png' alt='For my love' width="100%" style={{objectFit:"cover"}} />
       ) : (
         <DomeGallery />
       )}
