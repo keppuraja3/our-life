@@ -19,7 +19,7 @@ export default function Home() {
         //   speed={3}
         //   className="custom-class"
         // />
-        <img src='/images/my_love_33.png' alt='For my love' width="100%" style={{objectFit:"contain"}} />
+        <img src='/images/my_love_33.png' alt='For my love' style={{objectFit:"contain"}} />
       ) : (
         <DomeGallery />
       )}
