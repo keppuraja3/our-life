@@ -9,7 +9,7 @@ import { useGesture } from '@use-gesture/react';
 // 5: 'jpg',
 // ...
 const IMAGE_FORMATS = {
-
+  31: 'png',
   32: 'png',
   33: 'png',
   34: 'png',
@@ -18,13 +18,9 @@ const IMAGE_FORMATS = {
   37: 'png',
   38: 'png',
   39: 'png',
-  40: 'png',
-  41: 'png',
-  42: 'png',
-  43: 'png',
 };
 
-const DEFAULT_IMAGES = Array.from({ length: 120 }, (_, i) => {
+const DEFAULT_IMAGES = Array.from({ length: 60 }, (_, i) => {
   const index = i + 1;
   const ext = IMAGE_FORMATS[index] || 'jpg'; // fallback
 
@@ -412,6 +408,9 @@ export default function DomeGallery({
         parent.style.setProperty('--rot-x-delta', `0deg`);
         el.style.visibility = '';
         el.style.zIndex = 0;
+        if (focusedElRef.current) {
+          focusedElRef.current.classList.remove('is-active');
+        }        
         focusedElRef.current = null;
         rootRef.current?.removeAttribute('data-enlarging');
         openingRef.current = false;
@@ -534,6 +533,7 @@ export default function DomeGallery({
     lockScroll();
     const parent = el.parentElement;
     focusedElRef.current = el;
+    el.classList.add('is-active');
     el.setAttribute('data-focused', 'true');
 
     const offsetX = getDataNumber(parent, 'offsetX', 0);
@@ -604,7 +604,7 @@ export default function DomeGallery({
     img.style.width = '100%';
     img.style.height = '100%';
     img.style.objectFit = 'cover';
-    img.style.filter = grayscale ? 'grayscale(1)' : 'none';
+    img.style.filter = 'none';
     overlay.appendChild(img);
     viewerRef.current.appendChild(overlay);
 
@@ -721,6 +721,19 @@ export default function DomeGallery({
     .sphere-root[data-enlarging="true"] .scrim {
       opacity: 1 !important;
       pointer-events: all !important;
+    }
+
+    .item__image img {
+      filter: grayscale(1);
+      transition: filter 300ms ease;
+    }
+
+    .item__image.is-active img {
+      filter: grayscale(0);
+    }
+
+    .item__image.is-active {
+      transform: scale(1.03);
     }
     
     @media (max-aspect-ratio: 1/1) {
